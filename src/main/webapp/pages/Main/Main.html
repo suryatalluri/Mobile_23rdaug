@@ -1,10 +1,81 @@
-<wm-page data-ng-controller="MainPageController" name="mainpage">
-  <wm-left-panel content="leftnav" columnwidth="2" name="left_panel1"></wm-left-panel>
-  <wm-mobile-navbar name="mobile_navbar1" title="Title" leftnavpaneliconclass="wi wi-menu" backbutton="false">
-    <wm-anchor caption="" name="AddLink" iconclass="wi wi-plus"></wm-anchor>
-  </wm-mobile-navbar>
-  <wm-content name="content1">
-    <wm-page-content columnwidth="12" name="page_content1"></wm-page-content>
-  </wm-content>
-  <wm-mobile-tabbar dataset="home,music,edit" name="mobile_tabbar1"></wm-mobile-tabbar>
+<wm-page name="mainpage" data-ng-controller="MainPageController">
+    <wm-left-panel name="left_panel1" content="leftnav" columnwidth="2"></wm-left-panel>
+    <wm-mobile-navbar title="Title" name="mobile_navbar1" backbutton="false" leftnavpaneliconclass="wi wi-menu">
+        <wm-anchor name="AddLink" caption="" iconclass="wi wi-plus"></wm-anchor>
+    </wm-mobile-navbar>
+    <wm-content name="content1">
+        <wm-page-content name="page_content1" columnwidth="12">
+            <wm-form title="Form" name="form1" enctype="application/x-www-form-urlencoded" on-submit="GoogleapisInvoke" captionposition="top" method="get" captionalign="left">
+                <wm-layoutgrid name="layoutgrid1" columns="1">
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn name="gridcolumn1" columnwidth="12">
+                            <wm-form-field type="string" readonly="false" name="sensor" show="true" widget="text" key="sensor" displayname="Sensor"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow2">
+                        <wm-gridcolumn name="gridcolumn2" columnwidth="12">
+                            <wm-form-field type="string" readonly="false" name="origin" show="true" widget="text" key="origin" displayname="Origin"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow3">
+                        <wm-gridcolumn name="gridcolumn3" columnwidth="12">
+                            <wm-form-field type="string" readonly="false" name="destination" show="true" widget="text" key="destination" displayname="Destination"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-buttongroup class="form-action col-md-12" name="buttongroup1" horizontalalign="right">
+                    <wm-button class="btn-secondary" type="reset" name="button1" caption="Reset"></wm-button>
+                    <wm-button class="btn-warning" type="button" name="button2" caption="Cancel"></wm-button>
+                    <wm-button class="btn-primary" type="submit" name="button3" caption="Save"></wm-button>
+                </wm-buttongroup>
+            </wm-form>
+            <wm-livelist class="media-list" name="livelist1" dataset="bind:Variables.HrdbUserData.dataSet" template="true" itemclass="list-group-item media" listclass="list-group" navigation="None">
+                <wm-listtemplate name="listtemplate1" layout="media">
+                    <wm-container class="media-left" name="container1">
+                        <wm-picture class="media-object picture" name="Picture" width="40pt" shape="circle"></wm-picture>
+                    </wm-container>
+                    <wm-container class="media-body" name="container2">
+                        <wm-label class="h4" name="Name" caption="bind:Variables.HrdbUserData.dataSet.username" width="100%" margin="0px unset"></wm-label>
+                        <wm-label class="p text-muted" name="Title" caption="bind:Variables.HrdbUserData.dataSet.password" width="100%"></wm-label>
+                    </wm-container>
+                    <wm-container class="media-right media-top" name="container9" horizontalalign="right" width="20%">
+                        <wm-buttongroup name="buttongroup1">
+                            <wm-button class="btn-transparent edit-list-item" name="button1" caption="" iconclass="wi wi-pencil" fontunit="pt" fontsize="18" margin="unset 0.2em unset unset"></wm-button>
+                            <wm-button class="btn-transparent delete-list-item" name="button2" caption="" iconclass="wi wi-trash" fontunit="pt" fontsize="18"></wm-button>
+                        </wm-buttongroup>
+                    </wm-container>
+                </wm-listtemplate>
+            </wm-livelist>
+            <wm-liveform title="User Info" name="liveform1" iconclass="wi wi-edit" dataset="bind:Variables.HrdbUserData.dataSet" captionposition="top" captionalign="left" formlayout="dialog" novalidate="false" defaultmode="Edit" formdata="bind:Widgets.livelist1.selecteditem"
+            dependson="livelist1">
+                <wm-layoutgrid name="layoutgrid2" columns="1">
+                    <wm-gridrow name="gridrow4">
+                        <wm-gridcolumn name="gridcolumn4" columnwidth="12">
+                            <wm-form-field type="string" name="username" show="true" required="false" widget="text" key="username" displayname="Username" mobile-display="true" pc-display="true" maxchars="20" is-related="false" primary-key="false" generator="assigned"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow5">
+                        <wm-gridcolumn name="gridcolumn5" columnwidth="12">
+                            <wm-form-field type="string" name="password" show="true" required="false" widget="text" key="password" displayname="Password" mobile-display="true" pc-display="true" maxchars="20" is-related="false" primary-key="false" generator="assigned"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow6">
+                        <wm-gridcolumn name="gridcolumn6" columnwidth="12">
+                            <wm-form-field type="string" name="role" show="true" required="false" widget="text" key="role" displayname="Role" mobile-display="true" pc-display="true" maxchars="20" is-related="false" primary-key="false" generator="assigned"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow7">
+                        <wm-gridcolumn name="gridcolumn7" columnwidth="12">
+                            <wm-form-field type="integer" name="tenantid" show="true" required="false" widget="number" key="tenantid" displayname="Tenantid" mobile-display="true" pc-display="true" is-related="false" primary-key="false" generator="assigned"
+                            step="0"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-form-field type="integer" name="userid" show="false" required="true" widget="number" key="userid" displayname="Userid" mobile-display="true" pc-display="true" is-related="false" primary-key="true" generator="identity" step="0"></wm-form-field>
+                <wm-form-action class="form-cancel btn-secondary" type="button" show="true" iconclass="wi wi-cancel" key="cancel" update-mode="true" display-name="Cancel" action="cancel()"></wm-form-action>
+                <wm-form-action class="form-save btn-success" type="submit" show="true" iconclass="wi wi-save" key="save" update-mode="true" display-name="Save"></wm-form-action>
+            </wm-liveform>
+        </wm-page-content>
+    </wm-content>
+    <wm-mobile-tabbar name="mobile_tabbar1" dataset="home,music,edit"></wm-mobile-tabbar>
 </wm-page>

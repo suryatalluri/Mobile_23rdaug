@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="Calculator" type="SoapService" springFile="Calculator.spring.xml">
+    <dataobjects>
+        <dataobject javaType="com.mobile_23rdaug.services.calculator.SubtractResponse" name="SubtractResponse">
+            <element name="subtractResult" typeRef="java.lang.Integer" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.mobile_23rdaug.services.calculator.DivideResponse" name="DivideResponse">
+            <element name="divideResult" typeRef="java.lang.Integer" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.mobile_23rdaug.services.calculator.MultiplyResponse" name="MultiplyResponse">
+            <element name="multiplyResult" typeRef="java.lang.Integer" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.mobile_23rdaug.services.calculator.Add" name="Add">
+            <element name="intB" typeRef="java.lang.Integer" allowNull="true"/>
+            <element name="intA" typeRef="java.lang.Integer" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.mobile_23rdaug.services.calculator.AddResponse" name="AddResponse">
+            <element name="addResult" typeRef="java.lang.Integer" allowNull="true"/>
+        </dataobject>
+    </dataobjects>
+</service>
