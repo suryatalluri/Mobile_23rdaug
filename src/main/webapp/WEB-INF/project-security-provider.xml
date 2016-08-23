@@ -176,15 +176,15 @@
         </property>
         <property name="xssConfig">
             <bean class="com.wavemaker.studio.common.model.security.XSSConfig">
-                <property name="enforceXssSecurity" value="false"/>
+                <property name="enforceXssSecurity" value="true"/>
                 <property name="policyFile" value="wm-xss-policies.xml"/>
-                <property name="xssFilterStrategy" value="NONE"/>
+                <property name="xssFilterStrategy" value="WHITE_LIST"/>
             </bean>
         </property>
         <property name="csrfConfig" ref="csrfConfig"/>
     </bean>
     <bean class="com.wavemaker.studio.common.model.security.CSRFConfig" id="csrfConfig">
-        <property name="enforceCsrfSecurity" value="false"/>
+        <property name="enforceCsrfSecurity" value="true"/>
         <property name="headerName" value="X-WM-XSRF-TOKEN"/>
     </bean>
     <bean class="org.springframework.security.authentication.dao.DaoAuthenticationProvider" id="demoAuthenticationProvider">

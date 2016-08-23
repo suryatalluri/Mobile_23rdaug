@@ -7,12 +7,12 @@
     "excludedUrls" : null
   },
   "xssConfig" : {
-    "enforceXssSecurity" : false,
+    "enforceXssSecurity" : true,
     "policyFile" : "wm-xss-policies.xml",
-    "xssFilterStrategy" : "NONE"
+    "xssFilterStrategy" : "WHITE_LIST"
   },
   "csrfConfig" : {
-    "enforceCsrfSecurity" : false,
+    "enforceCsrfSecurity" : true,
     "headerName" : "X-WM-XSRF-TOKEN"
   },
   "authProviders" : [ "DEMO" ],
